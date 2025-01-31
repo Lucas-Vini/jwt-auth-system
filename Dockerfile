@@ -12,7 +12,4 @@ ENV FLASK_RUN_HOST=0.0.0.0
 
 EXPOSE 80
 
-CMD if [ "$FLASK_ENV" = "development" ]; \
-    then flask run -p 80 --debug; \
-    else gunicorn -b 0.0.0.0:80 app.__main__:app; \
-    fi
+CMD ["sh", "-c", "if [ \"$FLASK_ENV\" = \"development\" ]; then flask run -p 80 --debug; else gunicorn -b 0.0.0.0:80 app.__main__:app; fi"]
