@@ -1,8 +1,10 @@
 from flask import Flask
 from app.ping import ping
+from app.auth import auth
 
 ACTIVE_ENDPOINTS = (
 	("/", ping),
+	("/", auth)
 	)
 
 def create_app():
