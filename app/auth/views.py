@@ -1,9 +1,12 @@
-from flask import Blueprint
+from flask import Blueprint, request
+from app.auth.handler.signup import SignUpHandler
 
 auth = Blueprint("auth", __name__)
 
-@auth.route("/signup")
+@auth.route("/signup", methods = ['POST'])
 def signup():
+	data = request.json
+	SignUpHandler(data.get("username"), data.get("password"))
 	return "signup"
 
 @auth.route("/login")
