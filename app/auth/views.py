@@ -6,8 +6,8 @@ auth = Blueprint("auth", __name__)
 @auth.route("/signup", methods = ['POST'])
 def signup():
 	data = request.json
-	SignUpHandler(data.get("username"), data.get("password"))
-	return "signup"
+	user = SignUpHandler(data.get("username"), data.get("password"))
+	return user.register_user()
 
 @auth.route("/login")
 def login():
