@@ -5,7 +5,7 @@ class SignUpHandler():
         self.message = None
 
     def register_user(self):
-        if not self.is_strong_password():
+        if not self.is_valid_password():
             return {"error": self.message}, 422
         
         if not self.is_valid_username():
@@ -17,8 +17,13 @@ class SignUpHandler():
         self.create_user(self)
         return {"message": self.message}, 200
     
-    def is_strong_password(self) -> bool:
-        pass
+    def is_valid_password(self) -> bool:
+        if len(self.password) < 8:
+            self.message = "Password must have at least 8 characters"
+            return False
+        if len(self.password) > 32:
+            self.message = "Password must have at most 32 characters"
+            return False
 
     def is_valid_username(self) -> bool:
         pass
