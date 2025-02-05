@@ -24,6 +24,9 @@ class SignUpHandler():
         if len(self.password) > 32:
             self.message = "Password must have at most 32 characters"
             return False
+        if not any(char.isdigit() for char in self.password):
+            self.message = "Password must have at least one digit (0-9)"
+            return False
 
     def is_valid_username(self) -> bool:
         pass
