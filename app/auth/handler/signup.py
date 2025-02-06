@@ -27,6 +27,9 @@ class SignUpHandler():
         if not any(char.isdigit() for char in self.password):
             self.message = "Password must have at least one digit (0-9)"
             return False
+        if not any(not char.isalnum() for char in self.password):
+            self.message = "Password must have at least one special characters like !@#$%¨&*()<>: or others"
+            return False
 
     def is_valid_username(self) -> bool:
         pass
