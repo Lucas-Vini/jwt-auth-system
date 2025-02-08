@@ -35,8 +35,12 @@ class SignUpHandler():
             return False
 
     def is_valid_username(self) -> bool:
-        if len(self.username) > 0:
-            self.message = "Password must have at least 8 characters"
+        if not isinstance(self.username, str):
+            self.message = "Username must be string"
+            return False
+        if len(self.username) < 1:
+            self.message = "Username must have at least 1 character"
+            return False
 
     def user_already_registered(self) -> bool:
         pass
